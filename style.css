@@ -1,0 +1,145 @@
+:root {
+    --clr-dark-blue: hsl(212, 21%, 14%);
+    --clr-darker-blue: hsl(228, 12%, 48%);
+    --clr-white: hsl(0, 0%, 100%);
+
+    --clr-dark-cyan: hsl(158, 36%, 37%);
+    /*a bit darker for hover*/
+    --clr-darker-cyan: hsl(158, 36%, 19%);
+    --clr-cream: hsl(30, 38%, 92%);
+
+    --font-family-second: 'Fraunces', serif;
+    --font-family-first: 'Montserrat', sans-serif;
+}
+
+/*RESET PROPERTIES*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+button {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+
+html, body{
+    height: 100vh;
+}
+
+/*Styling main*/
+body{
+    background-color: var(--clr-cream);
+    color: var(--clr-darker-blue);
+    font-family: var(--font-family-first);
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: grid;
+    place-items: center;
+    margin: 1rem;
+}
+
+.perfume__article{
+    background-color: var(--clr-white);
+    border-radius: 0.5rem;
+    overflow: hidden;
+
+    /*coming to desktop*/
+    display: grid;
+    max-width: 37.5rem;
+}
+
+.perfume__content{
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.perfume__class{
+    text-transform: uppercase;
+    letter-spacing: 0.25rem; /*0.3125rem*/
+}
+
+.perfume__title{
+    font-family: var(--font-family-second);
+    font-weight: 700;
+    color: var(--clr-dark-blue);
+    font-size: 2rem;
+    line-height: 1 ;
+}
+
+.perfume__price{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.new__price{
+    color: var(--clr-dark-cyan);
+    font-size: 2rem;
+    font-family: var(--font-family-second);
+}
+
+.button{
+    background-color: var(--clr-dark-cyan);
+    border-radius: 0.5rem;
+    border: 0;
+    padding: 0.5rem 1.5rem;
+    color: var(--clr-white);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.875rem;
+    /*adding some properties for cart*/
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.button:is(:hover, :focus){
+    background-color: var(--clr-darker-cyan);
+}
+
+/*Just a nice way to add an icon
+but the best solution will be to add other class for it*/
+.button::before{
+    content: "";
+    background-image: url('/images/icon-cart.svg');
+    width: 0.9375rem;
+    height: 1rem;
+}
+
+/*Accessibility class for span in prices for screen-readers*/
+.accessibile_prices:not(:focus):not(:active) {
+    clip: rect(0 0 0 0); 
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap; 
+    width: 1px;
+  }
+
+@media (min-width: 37.5rem) {
+    .perfume__article{
+        grid-template-columns: 1fr 1fr;
+    }
+    .perfume__content{
+        padding: 2rem;
+    }
+
+}
